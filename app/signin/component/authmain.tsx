@@ -134,6 +134,7 @@ export const Authmain = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className=" rounded">
+          {variable === "REGISTER" && (
             <div>
               <Input
                 id="name"
@@ -148,8 +149,8 @@ export const Authmain = () => {
               />
               {errors.name && (
                 <p className="text-red-500 text-sm">{errors.name}</p>
+)}</div>
               )}
-            </div>
             <div>
               <Input
                 id="email"

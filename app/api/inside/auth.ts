@@ -9,7 +9,7 @@ import { error } from "console";
 import { Session } from "inspector";
 
 export const authOptions: NextAuthOptions = {
-    adapter: PrismaAdapter(db),
+  adapter: PrismaAdapter(db),
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -28,17 +28,17 @@ export const authOptions: NextAuthOptions = {
       //@ts-ignore
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('Invalid Crediential')
+          throw new Error("Invalid Crediential");
         }
 
         const user = await db.user.findUnique({
           where: { email: credentials.email },
         });
         //@ts-ignore
-        if (user && bcrypt.compareSync(credentials.password,user.password)) {
+        if (user && bcrypt.compareSync(credentials.password, user.password)) {
           return { id: user.id, email: user.email, username: user.name };
         }
-        return user
+        return user;
       },
     }),
   ],
@@ -51,21 +51,21 @@ export const authOptions: NextAuthOptions = {
     signIn: "/signin",
   },
   callbacks: {
-  jwt: async ({ user, token }) => {
-    if (user) {
-      token.id = user.id;
-    }
-    return token;
-  },
-  session: async ({ session, token }) => {
-    if (session.user) {
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    session: async ({ session, token }) => {
+      if (session.user) {
         //@ts-ignore
-        
-      session.user.id = token.id;
-    }
-    console.log(token.id)
-    
-    return session;
+
+        session.user.id = token.id as string;
+      }
+      console.log(token.id);
+
+      return session;
+    },
   },
-},
-}
+};

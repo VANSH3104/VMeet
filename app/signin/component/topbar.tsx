@@ -1,21 +1,18 @@
 "use client";
 import { signIn } from "next-auth/react";
+
 export const Topbar = () => {
   return (
-    <div className="rounded-lg shadow-sm">
-      <div className="flex justify-between">
-        <div className="h-full">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow">
+      <div className="flex justify-between items-center h-16">
+        <div className="">
           <img
             src="/images/Group.png"
-            className="w-32 h-17 pl-8 object-contain"
+            className="w-32 h-auto object-contain" 
             alt="Project Logo"
           />
         </div>
-        <div className="">
-          <div>
-            <button onClick={() => signIn()}>signin</button>
-          </div>
-        </div>
+        <button onClick={() => signIn()} className="p-2">Sign In</button> {/* Simplified structure */}
       </div>
     </div>
   );

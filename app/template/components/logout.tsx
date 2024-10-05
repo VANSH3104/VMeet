@@ -1,6 +1,4 @@
 "use client"
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react'; // If using NextAuth.js, otherwise, implement custom logic
 export const Logout = ()=>{
   return (

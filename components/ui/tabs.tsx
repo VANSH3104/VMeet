@@ -50,6 +50,29 @@ const TabsContent = React.forwardRef<
     {...props}
   />
 ))
+interface TabsEndProps {
+  activeIndex: number;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+}
+const TabsEnd = ({ activeIndex, setActiveIndex }:TabsEndProps) => {
+  return (
+    <div className="flex items-center justify-between mt-4">
+      <button
+        onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
+        disabled={activeIndex === 0}
+        className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+      >
+        Previous
+      </button>
+      <button
+        onClick={() => setActiveIndex((prev) => prev + 1)}
+        className="px-4 py-2 bg-gray-300 rounded"
+      >
+        Next
+      </button>
+    </div>
+  );
+};
 TabsContent.displayName = TabsPrimitive.Content.displayName
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsList, TabsTrigger, TabsContent , TabsEnd}

@@ -3,12 +3,12 @@ import { signIn } from "next-auth/react";
 
 export const Topbar = () => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow">
+    <div className="bg-white shadow">
       <div className="flex justify-between items-center h-16">
         <div className="">
           <img
             src="/images/Group.png"
-            className="w-32 h-auto object-contain" 
+            className="h-20 pl-5" 
             alt="Project Logo"
           />
         </div>

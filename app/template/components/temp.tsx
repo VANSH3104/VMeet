@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import { Userset } from "./subcomponent/userset";
+import Resume from "./subcomponent/tab1";
 
 const AllTemp = () => {
   const [Toggle , setToggle]= useState(false);
@@ -12,9 +13,11 @@ const AllTemp = () => {
             <Userset />
         </div>
       </div>
-      <div className={`flex-1 ${Toggle ? "sm:block": "hidden md:block"} bg-red-300`}>
-      <button onClick={()=>{setToggle(false)}}>See</button>
-          ejrj
+      <div className={`flex-1 ${Toggle ? "sm:block": "hidden md:block"} bg-red-300 overflow-y-auto p-2`}>
+      <button  className = "block md:hidden" onClick={()=>{setToggle(false)}}>See</button>
+      <div className="h-full ">
+        <Resume />
+      </div>  
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@/app/signin/component/input";
+import { Input } from "@/app/signin/_components/input";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Social } from "./authsocial";
@@ -32,7 +32,7 @@ export const Authmain = () => {
   const { toast } = useToast();
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push("/template");
+      router.push("/dashboard");
     }
   }, [session?.status, router]);
 
@@ -103,7 +103,7 @@ export const Authmain = () => {
             toast({ title: "Invalid Credentials" });
           } else {
             toast({ title: "Login Successful" });
-            router.push("/template");
+            router.push("/dashboard");
           }
         })
         .finally(() => setLoading(false));
@@ -118,7 +118,7 @@ export const Authmain = () => {
           toast({ title: "Invalid Credentials" });
         } else {
           toast({ title: "Login Successful" });
-          router.push("/template");
+          router.push("/dashboard");
         }
       })
       .finally(() => setLoading(false));

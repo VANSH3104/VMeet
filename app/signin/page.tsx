@@ -1,5 +1,5 @@
 "use client"
-import {Authmain} from "./component/authmain"
+import {Authmain} from "./_components/authmain"
 import { ImCross } from "react-icons/im";
 const Signin = ()=>{
     const goBack = () => {

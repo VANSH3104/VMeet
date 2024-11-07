@@ -1,11 +1,20 @@
 "use client"
-import { signOut } from 'next-auth/react'; // If using NextAuth.js, otherwise, implement custom logic
+import { signOut } from 'next-auth/react';
+import { ImExit } from "react-icons/im";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 export const Logout = ()=>{
   return (
-    <div>
-      <h1>Signing Out...</h1>
-      <button onClick={()=>signOut({ callbackUrl: '/signin' })}>signout</button>;
-      <p>You will be redirected shortly.</p>
+    <div className='p-4'>
+      <HoverCard>
+        <HoverCardTrigger><ImExit onClick={()=>signOut({ callbackUrl: '/signin' })} className='text-black size-6' /></HoverCardTrigger>
+        <HoverCardContent className='w-full rounded-lg'>
+          Logout
+        </HoverCardContent>
+      </HoverCard>
     </div>
   );
 };
